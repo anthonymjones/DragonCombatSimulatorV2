@@ -133,9 +133,8 @@ You start running down the hall towards the hospital cafeteria, but the zombies 
             while (this.Player.IsAlive && this.Enemy.IsAlive)
             {
                 DisplayCombatInfo();
-                this.Enemy.TakeDamage(this.Player.DoAttack());
-                this.Player.TakeDamage(this.Enemy.DoAttack());
-                Console.Clear();
+                this.Player.DoAttack(Enemy);
+                this.Enemy.DoAttack(Player);
 
             }
             if (this.Player.IsAlive) { Console.WriteLine("You Won!"); }

@@ -28,7 +28,7 @@ namespace DragonCombatSimulatorV2
 
         //takes no args, contains all the logic for determining a hit. Combat text for the attack also happens here
         //It returns an int in the amount of damage dealt for use with the TakeDamage().
-        public int DoAttack()
+        public void DoAttack(Player Player)
         {
             //Create random number generator
             Random rng = new Random();
@@ -51,12 +51,9 @@ namespace DragonCombatSimulatorV2
                 //tell the player the horde missed.
                 Console.WriteLine("The zombies slash at you, but miss!");
             }
-            return damageDealt;
+
         }
 
-        public void TakeDamage(int damage)
-        {
- 
-        }
+
     }
 }

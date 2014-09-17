@@ -32,7 +32,7 @@ namespace DragonCombatSimulatorV2
         }
 
         //STEP 3. METHODS AND FUNCTIONS
-        public int DoAttack()
+        public void DoAttack(Enemy Enemy)
         {
             AttackType chosenAttack = ChooseAttack();
 
@@ -59,7 +59,7 @@ namespace DragonCombatSimulatorV2
                     {
                         //calculate the amount of damage(20 - 35 HP) to the dragon, display to player, subtract amount from dragon HP
                         int att1Dam = rng.Next(20, 36);
-                        HP -= att1Dam;
+                        this.HP -= att1Dam;
                         Console.WriteLine(@" ________________________________________________________________________________________________________
 |                                                                                                        |");
                         Console.WriteLine("  The grenade hits the middle of the horde, and causes " + att1Dam + " damage to the zombies!");
@@ -93,7 +93,7 @@ namespace DragonCombatSimulatorV2
                     {
                         //critical hit, causes 65 damage
                         int att2critDam = 65;
-                        HP = HP - att2critDam;
+                        HP -= att2critDam;
                         Console.WriteLine(@" ________________________________________________________________________________________________________
 |                                                                                                        |");
                         Console.WriteLine("  You blasted the zombies with your shotgun, and it was a CRITICAL HIT! Causing 65 damage to the horde!");
@@ -105,7 +105,7 @@ namespace DragonCombatSimulatorV2
                     {
                         //they hit, calculate the amount of damage(10 - 15 HP) to the dragon, display to player, subtract the amount from dragon HP
                         int att2Dam = rng.Next(10, 16);
-                        HP = HP - att2Dam;
+                        HP -= att2Dam;
                         Console.WriteLine(@" ________________________________________________________________________________________________________
 |                                                                                                        |");
                         Console.WriteLine("  You blasted the zombies with your shotgun, and caused " + att2Dam + " damage to the horde!");
@@ -139,7 +139,7 @@ namespace DragonCombatSimulatorV2
                     //calculate the amount they've healed(10 - 20 HP), display to player, add the amount to player HP
                     Random rng = new Random();
                     int playerHeal = rng.Next(10, 21);
-                    HP = HP + playerHeal;
+                    HP += playerHeal;
                     Console.WriteLine(@" ________________________________________________________________________________________________________
 |                                                                                                        |");
                     Console.WriteLine("  You plunge a syringe into your heart, and heal " + playerHeal + " points.");
@@ -165,7 +165,6 @@ namespace DragonCombatSimulatorV2
                 Console.WriteLine("|________________________________________________________________________________________________________|");
             }
 
-            return DoAttack();
         }
         private AttackType ChooseAttack()
         {
@@ -186,10 +185,7 @@ namespace DragonCombatSimulatorV2
                 return AttackType.Null;
             }
         }
-        public void TakeDamage(int damage)
-        {
 
-        }
     }
 }
 
