@@ -28,21 +28,21 @@ namespace DragonCombatSimulatorV2
 
         //takes no args, contains all the logic for determining a hit. Combat text for the attack also happens here
         //It returns an int in the amount of damage dealt for use with the TakeDamage().
-        public void DoAttack(Player Player)
+        public int DoAttack(Player Player)
         {
             //Create random number generator
             Random rng = new Random();
             //Calculate the horde chance of hitting (80%)
             int hordeHitChance = rng.Next(1, 101);
-            int damageDealt = 0;
+            int damage = 0;
             //Horde hit
             if (hordeHitChance < 80)
             {
                 //Calculate the amount of damage(5 - 15 HP) to the player, display to the player, subtract amount from player HP
-                damageDealt = rng.Next(5, 16);
-
+                damage = rng.Next(5, 16);
+                Player.HP -= damage;
                 Console.WriteLine();
-                Console.Write("The zombies grab you and take a bite for " + damageDealt + " damage!");
+                Console.Write("The zombies grab you and take a bite for " + damage + " damage!");
                 Console.WriteLine();
             }
             //Horde missed
@@ -52,6 +52,7 @@ namespace DragonCombatSimulatorV2
                 Console.WriteLine("The zombies slash at you, but miss!");
             }
 
+            return damage;
         }
 
 

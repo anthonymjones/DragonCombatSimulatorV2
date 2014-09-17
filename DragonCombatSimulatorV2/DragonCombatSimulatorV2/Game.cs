@@ -84,6 +84,7 @@ namespace DragonCombatSimulatorV2
         }
         public void DisplayCombatInfo()
         {
+            Console.ReadKey();
             Console.Clear();
             Console.WriteLine();
             //player stats bar
@@ -97,6 +98,11 @@ ________________________________________________________________________________
         }
         public void PlayGame()
         {
+            //Set console window width to max
+            Console.WindowWidth = 160;
+            Console.WindowHeight = 55;
+            Console.Title = "...";
+            
             this.Player = new Player(100);
             this.Enemy = new Enemy("Zombie Horde", 200);
 
@@ -128,7 +134,6 @@ You start running down the hall towards the hospital cafeteria, but the zombies 
 ");
             Console.WriteLine();
             Console.WriteLine("Press any key when ready.");
-            Console.ReadKey();
 
             while (this.Player.IsAlive && this.Enemy.IsAlive)
             {
@@ -137,8 +142,11 @@ You start running down the hall towards the hospital cafeteria, but the zombies 
                 this.Enemy.DoAttack(Player);
 
             }
+            Console.WriteLine();
             if (this.Player.IsAlive) { Console.WriteLine("You Won!"); }
             else { Console.WriteLine("You Lost!"); }
+            //keep window open for 3 seconds after end game
+            System.Threading.Thread.Sleep(3000);
         }
     }
 }
