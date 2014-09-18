@@ -43,7 +43,11 @@ namespace DragonCombatSimulatorV2
                 Player.HP -= damage;
                 Console.WriteLine();
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+
                 Console.Write("    The zombies grab you and take a bite for " + damage + " damage!");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -55,7 +59,11 @@ namespace DragonCombatSimulatorV2
                 //tell the player the horde missed.
                 Console.WriteLine();
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+
                 Console.WriteLine("    The zombies slash at you, but miss!");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();

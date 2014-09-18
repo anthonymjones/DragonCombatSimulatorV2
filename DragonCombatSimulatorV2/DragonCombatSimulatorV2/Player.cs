@@ -34,6 +34,8 @@ namespace DragonCombatSimulatorV2
         //STEP 3. METHODS AND FUNCTIONS
         public int DoAttack(Enemy Enemy)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+
             AttackType chosenAttack = ChooseAttack();
             int damage = 0;
             //if their selection is 1 
@@ -66,7 +68,7 @@ namespace DragonCombatSimulatorV2
     |                                                                                                        |");
                         Console.WriteLine("      The grenade hits the middle of the horde, and causes " + damage + " damage to the zombies!");
                         Console.WriteLine("    |________________________________________________________________________________________________________|");
-
+                        att1Count++;
                     }
                     //didn't hit
                     else
@@ -77,9 +79,9 @@ namespace DragonCombatSimulatorV2
     |                                                                                                        |");
                         Console.WriteLine("      The grenade fizzled out. It was a dud!");
                         Console.WriteLine("    |________________________________________________________________________________________________________|");
-
+                        att1Count++;
                     }
-                    att1Count++;
+                    
                 }
             }
             //else if their selection is 2
@@ -174,7 +176,8 @@ namespace DragonCombatSimulatorV2
                 Console.WriteLine("    |________________________________________________________________________________________________________|");
             }
             return damage;
-            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
         }
         private AttackType ChooseAttack()
         {

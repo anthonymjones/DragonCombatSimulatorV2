@@ -21,6 +21,8 @@ namespace DragonCombatSimulatorV2
         //STEP 3. METHODS AND FUNCTIONS
         public void Title()
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
             System.Threading.Thread.Sleep(1500);
             Console.WriteLine();
             Console.WriteLine(@"                                    TTTTTTTTTTTTTTTTTTTTTTTHHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEE"); System.Threading.Thread.Sleep(50);
@@ -865,6 +867,20 @@ o°)/"); System.Threading.Thread.Sleep(100); Console.Clear();
 
 
                                                               Level      One");
+            Console.WriteLine(@"
+
+
+
+
+
+
+
+                                         
+
+
+
+
+");
             System.Threading.Thread.Sleep(4800); Console.Clear();
         }
 
@@ -874,11 +890,14 @@ o°)/"); System.Threading.Thread.Sleep(100); Console.Clear();
             Console.Clear();
             Console.WriteLine();
             //player stats bar
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(@"______________________________________________________________________________________________________________________________________________
 
   Player 1 Health     " + this.Player.HP + "/100                                                                                      Horde Health     " + this.Enemy.HP + @"/200
 ______________________________________________________________________________________________________________________________________________");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
             Console.WriteLine("    Make your move. Throw a grenade (press 1), Fire your shotgun (press 2), Take the adrenaline (press 3)");
             Console.WriteLine();
         }
@@ -886,7 +905,7 @@ ________________________________________________________________________________
         {
             //Set console window width to max
             Console.WindowWidth = 142;
-            Console.WindowHeight = 55;
+            Console.WindowHeight = 54;
             Console.Title = "...";
             
             this.Player = new Player(100);
