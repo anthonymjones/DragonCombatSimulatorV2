@@ -42,14 +42,24 @@ namespace DragonCombatSimulatorV2
                 damage = rng.Next(5, 16);
                 Player.HP -= damage;
                 Console.WriteLine();
-                Console.Write("The zombies grab you and take a bite for " + damage + " damage!");
                 Console.WriteLine();
+                Console.Write("    The zombies grab you and take a bite for " + damage + " damage!");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("    Press any key to make your next move.");
             }
             //Horde missed
             else
             {
                 //tell the player the horde missed.
-                Console.WriteLine("The zombies slash at you, but miss!");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("    The zombies slash at you, but miss!");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("    Press any key to make your next move.");
             }
 
             return damage;
