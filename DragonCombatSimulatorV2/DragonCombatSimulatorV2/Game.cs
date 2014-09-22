@@ -960,8 +960,63 @@ ________________________________________________________________________________
             Console.WriteLine();
             if (this.Player.IsAlive) { Console.WriteLine("    You decimated the zombie horde... this time."); }
             else { Console.WriteLine("    You've been devoured by the zombie horde, and since you're immune to the virus, you're really dead."); }
-            //keep window open for 9 seconds after end game
-            System.Threading.Thread.Sleep(9000);
+
+            //if player lost, display high score list without asking for name
+            if (!this.Player.IsAlive)
+            {
+                System.Threading.Thread.Sleep(3500);
+                DisplayHighScores();
+            }
+            //if player won, ask for name for high score list
+            else
+            {
+                System.Threading.Thread.Sleep(3500);
+                AddHighScore(Player.HP);
+                DisplayHighScores();
+            }
+        }
+        static void AddHighScore(int playerScore)
+        {
+            //get the player name for high scores
+            Console.Write("    Enter your name: ");
+            string playerName = Console.ReadLine();
+
+            //create a gateway to the database
+            AnthonyEntities db = new AnthonyEntities();
+
+            //create a new highscore object
+            HighScore newHighScore = new HighScore();
+            newHighScore.DateCreated = DateTime.Now;
+            newHighScore.Game = "The Waking Dead";
+            newHighScore.Name = playerName;
+            newHighScore.Score = playerScore;
+
+            //add to the database
+            db.HighScores.Add(newHighScore);
+
+            //save our changes
+            db.SaveChanges();
+        }
+        static void DisplayHighScores()
+        {
+            Console.SetWindowSize(40, 30);
+            //clear the console
+            Console.Clear();
+            //Write the High Score Text
+            Console.WriteLine();
+            Console.WriteLine("     The Waking Dead High Scores");
+            Console.WriteLine("    *****************************");
+
+            //create a new connection to the db
+            AnthonyEntities db = new AnthonyEntities();
+            //get the high score list
+            List<HighScore> highScoreList = db.HighScores.Where(x => x.Game == "The Waking Dead").OrderByDescending(x => x.Score).Take(10).ToList();
+
+            foreach (HighScore highScore in highScoreList)
+            {
+                Console.WriteLine("    {0}. {1} - {2} on {3}", highScoreList.IndexOf(highScore) + 1, highScore.Name, highScore.Score, highScore.DateCreated.Value.ToShortDateString());
+            }
+            Console.ReadKey();
         }
     }
 }
